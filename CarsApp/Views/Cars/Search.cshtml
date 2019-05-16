@@ -1,0 +1,49 @@
+﻿@model CarsApp.Models.Filters
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="List">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                @Html.DropDownListFor(x => x.State, new SelectListItem[] {new SelectListItem("Any", "any"), new SelectListItem("New", "new"), new SelectListItem("Used", "used")}, new {@class = "form-control"})
+            </div>
+            <div class="form-group">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control brand" autocomplete="off"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control model" autocomplete="off"/>
+            </div>
+            <label>Year Range</label>
+            <div class="row">
+                <div class="form-group col">
+                    <input asp-for="YearFrom" class="form-control" placeholder="From" autocomplete="off"/>
+                </div>
+                <div class="form-group col">
+                    <input asp-for="YearTo" class="form-control" placeholder="To" autocomplete="off"/>
+                </div>
+            </div>
+
+            <label>Price Range</label>
+            <div class="row">
+                <div class="form-group col">
+                    <input asp-for="PriceFrom" class="form-control" placeholder="From" autocomplete="off"/>
+                </div>
+                <div class="form-group col">
+                    <input asp-for="PriceTo" class="form-control" placeholder="To" autocomplete="off"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
